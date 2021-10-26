@@ -21,11 +21,11 @@ void Airship::Draw()
 {
     Texture::Instance()->Draw( m_TextureID, m_Transform->x, m_Transform->y, m_Width, m_Height, 0.0f, 0.06f, 0.06f );
     
-    for ( int i = 0; i < curr; i++ )
-    {
-        m_Bullets[i][0].Draw();
-        m_Bullets[i][1].Draw();
-    }
+    // for ( int i = 0; i < curr; i++ )
+    // {
+    //     m_Bullets[i][0].Draw();
+    //     m_Bullets[i][1].Draw();
+    // }
 }
 
 void Airship::Update( float dt )
@@ -51,19 +51,19 @@ void Airship::Update( float dt )
     {
         Audio::Instance()->Play( "shoot" );
 
-        m_Bullets[curr][0].Shoot( "bullet_2", m_Transform->x - 10, m_Transform->y );
-        m_Bullets[curr][1].Shoot( "bullet_2", m_Transform->x + 15, m_Transform->y );
+        // m_Bullets[curr][0].Shoot( "bullet_2", m_Transform->x - 10, m_Transform->y );
+        // m_Bullets[curr][1].Shoot( "bullet_2", m_Transform->x + 15, m_Transform->y );
 
         curr++;
         if ( curr > 99 ) curr = 0;
         m_BulletSpeed = 10.0f;
     }
 
-    for ( int i = 0; i < curr; i++ )
-    {
-        m_Bullets[i][0].Update( dt );
-        m_Bullets[i][1].Update( dt );
-    }
+    // for ( int i = 0; i < curr; i++ )
+    // {
+    //     m_Bullets[i][0].Update( dt );
+    //     m_Bullets[i][1].Update( dt );
+    // }
 
     m_RigidBody->Update( dt );
     m_LastSafePos = *m_Transform;

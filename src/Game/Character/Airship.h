@@ -17,7 +17,7 @@ public:
 
 private:
     RigidBody* m_RigidBody;
-    Bullet m_Bullets[100][2];
+    // Bullet m_Bullets[100][2];
     float m_BulletSpeed;
     Vector2D m_LastSafePos;
 };
