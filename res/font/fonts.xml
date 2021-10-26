@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<fonts>
+    <font id="calibri_16" source="../res/font/calibri.ttf" size="16" />
+    <font id="segoe_36" source="../res/font/segoescb.ttf" size="36" />
+    <font id="arlrdbd_16" source="../res/font/ARLRDBD.TTF" size="16" />
+    <font id="algerian_86" source="../res/font/ALGER.TTF" size="86" />
+    <font id="arial_18" source="../res/font/arial.ttf" size="18" />
+    <font id="arial_24" source="../res/font/arial.ttf" size="24" />
+    <font id="arial_32" source="../res/font/arial.ttf" size="32" />
+</fonts>

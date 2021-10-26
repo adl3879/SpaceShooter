@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<textures>
+    <!-- ship -->
+    <texture id="airship" source="../res/gfx/ship.png" />
+
+    <texture id="background" source="../res/gfx/stars_texture.png" />
+    <texture id="menu_background" source="../res/gfx/bg2.png" />
+
+    <!-- bullets -->
+    <texture id="bullet_1" source="../res/gfx/bullets/01.png" />
+    <texture id="bullet_2" source="../res/gfx/bullets/02.png" />
+    <texture id="bullet_3" source="../res/gfx/bullets/03.png" />
+    <texture id="bullet_4" source="../res/gfx/bullets/04.png" />
+    <texture id="bullet_5" source="../res/gfx/bullets/05.png" />
+</textures>

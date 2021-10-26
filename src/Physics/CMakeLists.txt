@@ -1,0 +1,9 @@
+add_library(
+    Physics
+    Vector2D.cpp
+    Vector2D.h
+    RigidBody.h
+    Collision/BoxCollider.h
+    Collision/CollisionHandler.cpp
+    Collision/CollisionHandler.h
+)

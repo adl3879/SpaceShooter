@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<audio>
+    <!-- sound -->
+    <sound id="shoot" source="../res/sfx/shoot.wav" />
+    <sound id="button_click" source="../res/sfx/click.wav" />
+</audio>

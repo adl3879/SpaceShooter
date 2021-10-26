@@ -1,0 +1,11 @@
+add_library(
+    TinyXML
+    tinystr.cpp
+    tinystr.h
+    tinyxml.cpp
+    tinyxml.h
+    tinyxmlerror.cpp
+    tinyxmlparser.cpp
+    tinystr.h.gch
+    tinyxml.h.gch
+)

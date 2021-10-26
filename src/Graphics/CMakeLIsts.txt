@@ -1,0 +1,7 @@
+add_library(
+    Graphics
+    Texture.cpp
+    Texture.h
+    Text.cpp
+    Text.h
+)
