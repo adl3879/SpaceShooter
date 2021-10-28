@@ -6,6 +6,8 @@
 #include "Vector2D.h"
 #include <vector>
 
+typedef std::vector<std::vector<Bullet*>> Bullets;
+
 class Airship : public GameObject
 {
 public:
@@ -15,9 +17,14 @@ public:
     virtual void Draw() override;
     virtual void Clean() override;
 
+    static Bullets* GetBullets();
+
+private:
+    void HandleInput( float dt );
+
 private:
     RigidBody* m_RigidBody;
-    // Bullet m_Bullets[100][2];
-    float m_BulletSpeed;
+    static Bullets m_Bullets;
+    float m_BulletInterval;
     Vector2D m_LastSafePos;
 };

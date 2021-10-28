@@ -1,6 +1,5 @@
 #include "Play.h"
 
-// #include "UserInterface/Button.h"
 #include "Pause.h"
 #include "ObjectFactory.h"
 #include "Text.h"
@@ -10,6 +9,7 @@
 Play::Play()
 {
     ObjectFactory::Instance()->Parse( "../res/gfx/objects.xml", m_GameObjects );
+    m_LevelID = "one";
 }
 
 bool Play::Init()
@@ -26,6 +26,8 @@ void Play::Render()
     if ( m_GameObjects.size() > 0 )
         for ( auto& obj : m_GameObjects ) 
             obj->Draw();
+
+    LevelFactory::Instance()->GetLevel( m_LevelID )->Draw();
 }
 
 void Play::Update()
@@ -34,6 +36,8 @@ void Play::Update()
     if ( m_GameObjects.size() > 0 )
         for ( auto& obj : m_GameObjects )
             obj->Update( dt );
+
+    LevelFactory::Instance()->GetLevel( m_LevelID )->Update( dt );
 
     if ( Input::GetKeyDown( SDL_SCANCODE_ESCAPE ) )
         PauseGame();
@@ -47,6 +51,8 @@ bool Play::Exit()
     if ( m_GameObjects.size() > 0 )
         for ( auto& obj : m_GameObjects )
             obj->Clean();
+
+    LevelFactory::Instance()->GetLevel( m_LevelID )->Clean();
 
     Texture::Instance()->Clean();
     Audio::Instance()->Clean();

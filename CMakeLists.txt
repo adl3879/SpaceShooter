@@ -40,12 +40,12 @@ file(GLOB SOURCE_FILES
 
 set(ENGINE_DIR
     src/Engine
-    src/Events
     src/Timer
     src/Graphics
     src/Animation
     src/Physics
     src/Object
+    src/Events
     src/Game
     src/AssetManager
     src/States

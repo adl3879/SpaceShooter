@@ -5,4 +5,11 @@ add_library(
     Character/Bullet.cpp
     Character/Bullet.h
     Character/Enemy.h
+
+    # Levels
+    Levels/Level.h
+    Levels/LevelFactory.cpp
+    Levels/LevelFactory.h
+    Levels/LevelOne.cpp
+    Levels/LevelOne.h
 )

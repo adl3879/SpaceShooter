@@ -1,9 +1,17 @@
 #include "Bullet.h"
 #include "Texture.h"
 
-Bullet::Bullet()
+Bullet::Bullet( std::string type, float x, float y, float angle, Direction direction, float speed )
 {
-    //
+    m_RigidBody = new RigidBody();
+    m_Pos = new Vector2D( x, y );
+    m_RigidBody->SetGravity( 0.0f );
+    m_Type = type;
+    m_Angle = angle;
+    m_Speed = speed;
+    m_Direction = direction;
+
+    m_IsFired = true;
 }
 
 void Bullet::Draw()
@@ -16,18 +24,9 @@ void Bullet::Update( float dt )
     if ( m_IsFired )
     {    
         m_RigidBody->UnSetForce();
-        m_RigidBody->ApplyForceY( 5.0f * UPWARD );
+        m_RigidBody->ApplyForceY( m_Speed * m_Direction );
+        m_RigidBody->ApplyForceX( m_Angle );
         m_RigidBody->Update( dt );
         m_RigidBody->Move( *m_Pos );
     }
-}
-
-void Bullet::Shoot( std::string type, float x, float y )
-{
-    m_Pos = new Vector2D( x, y );
-    m_RigidBody = new RigidBody();
-    m_RigidBody->SetGravity( 0.0f );
-    m_Type = type;
-
-    m_IsFired = true;
 }

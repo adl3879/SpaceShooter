@@ -1,9 +1,7 @@
 #pragma once
 
-/**
- * Pure virtual class
- * Acts as an structural interface for children classes 
-*/
+class Input;
+
 class Object
 {
 public:

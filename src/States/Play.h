@@ -2,6 +2,8 @@
 
 #include "GameState.h"
 #include "Engine.h"
+#include "Levels/Level.h"
+#include "Levels/LevelFactory.h"
 
 class Play : public GameState
 {
@@ -20,5 +22,6 @@ private:
 private:
     std::vector<GameObject*> m_GameObjects;
     SDL_Renderer* m_Ctx;
+    std::string m_LevelID;
 
 };
