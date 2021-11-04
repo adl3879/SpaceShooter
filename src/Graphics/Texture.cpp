@@ -52,19 +52,73 @@ void Texture::Draw( std::string id, int x, int y, int width, int height, float s
     m_Dimension[id].second = height * scaleY;
 
     SDL_Rect src = { 0, 0, width, height };
-    SDL_Rect dst = { x, y, (int)( width * scaleX ), (int)( height * scaleY ) }; 
+    SDL_Rect dst = { x, y, static_cast<int>( width * scaleX ), static_cast<int>( height * scaleY ) }; 
     SDL_RenderCopyEx( Engine::Instance()->GetRenderer(), m_TextureMap[id], &src, &dst, angle, nullptr, flip );
 }
 
-void Texture::DrawFrame( std::string id, int x, int y, int width, int height, int row, int frame, int scaleX, 
-    int scaleY, SDL_RendererFlip flip )
+void Texture::DrawFrame( std::string id, int x, int y, int width, int height, int row, int frame, float scaleX, 
+    float scaleY, double angle, SDL_RendererFlip flip )
 {
     m_Dimension[id].first = width * scaleX;
     m_Dimension[id].second = height * scaleY;
 
-	SDL_Rect srcRect = { width * frame, height * row, width, height };
-	SDL_Rect destRect = { x, y, (int)( width * scaleX ), (int)( height * scaleY ) };
-	SDL_RenderCopyEx( Engine::Instance()->GetRenderer(), m_TextureMap[id], &srcRect, &destRect, 0.0, nullptr, flip );
+	SDL_Rect src = { width * frame, height * row, width, height };
+	SDL_Rect dst = { x, y, static_cast<int>( width * scaleX ), static_cast<int>( height * scaleY ) };
+	SDL_RenderCopyEx( Engine::Instance()->GetRenderer(), m_TextureMap[id], &src, &dst, angle, nullptr, flip );
+}
+
+bool Texture::BlitParticle( std::string id, int x, int y, const SDL_Rect* section, const SDL_Rect* rectSize, SDL_Color color,
+    SDL_BlendMode blenMode, float speed, double angle, int pivotX, int pivotY )
+{
+    // unsigned int scale = 
+
+    SDL_Rect rect;
+    rect.x = x;
+    rect.y = y;
+
+    if ( rectSize != nullptr )
+    {
+        rect.w = rectSize->w;
+        rect.h = rectSize->h;
+    }
+    else if ( section != nullptr )
+    {
+        rect.w = section->w;
+        rect.h = section->h;
+    }
+    else
+    {
+        SDL_QueryTexture( m_TextureMap[id], nullptr, nullptr, &rect.w, &rect.h );
+    }
+
+    int px = rect.w / 2;
+    int py = rect.h / 2;
+
+    // rect.w *= scale
+    // rect.h *= scale
+
+    SDL_Point* p = nullptr;
+    SDL_Point pivot;
+    pivot.x = px;
+    pivot.y = py;
+    p = &pivot;
+
+    if ( SDL_SetTextureColorMod( m_TextureMap[id], color.r, color.g, color.b ) != 0 );
+        // SDL_Log( "Cannot set texture color mode. Error: %s", SDL_GetError() );
+
+    if ( SDL_SetTextureAlphaMod( m_TextureMap[id], color.a ) != 0 )
+        SDL_Log( "Cannot set texture alpha mode. Error: %s", SDL_GetError() );
+
+    if ( SDL_SetTextureBlendMode( m_TextureMap[id], blenMode ) != 0 )
+        SDL_Log( "Cannot set texture blend mode. Error: %s", SDL_GetError() );
+
+    if ( SDL_RenderCopyEx( Engine::Instance()->GetRenderer(), m_TextureMap[id], section, &rect, angle, nullptr, SDL_FLIP_NONE ) != 0 )
+    {
+        SDL_Log( "Cannot set texture alpha mode. Error: %s", SDL_GetError() );
+        return true;
+    }
+
+    return false;    
 }
 
 const int Texture::GetWidth( std::string id )

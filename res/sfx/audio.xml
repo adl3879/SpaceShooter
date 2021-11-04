@@ -4,4 +4,5 @@
     <!-- sound -->
     <sound id="shoot" source="../res/sfx/shoot.wav" />
     <sound id="button_click" source="../res/sfx/click.wav" />
+    <sound id="explosion" source="../res/sfx/explosion.wav" />
 </audio>

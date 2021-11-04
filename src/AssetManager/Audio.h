@@ -17,6 +17,8 @@ public:
 
     void Play( std::string id );
     void PlayMusic( std::string id );
+    // void Pause();
+    // void SetVolume();
 
     bool Parse( std::string source );
     void Drop( std::string id );

@@ -10,10 +10,10 @@ void SpriteAnimation::Update( float dt )
 }
 
 void SpriteAnimation::Draw( float x, float y, int spriteWidth, int spriteHeight, float xScale, float yScale, 
-    SDL_RendererFlip flip )
+    double angle, SDL_RendererFlip flip )
 {
 	Texture::Instance()->DrawFrame( m_TextureID, x, y, spriteWidth, spriteHeight, m_SpriteRow, m_SpriteFrame, 
-        xScale, yScale, flip );
+        xScale, yScale, angle, flip );
 }
 
 void SpriteAnimation::SetProps(std::string textureID, int spriteRow, int frameCount, int speed)

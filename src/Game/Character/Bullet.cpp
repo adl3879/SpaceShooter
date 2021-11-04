@@ -6,6 +6,10 @@ Bullet::Bullet( std::string type, float x, float y, float angle, Direction direc
     m_RigidBody = new RigidBody();
     m_Pos = new Vector2D( x, y );
     m_RigidBody->SetGravity( 0.0f );
+    m_Collider = new BoxCollider();
+    m_Collider->SetBuffer( -16, 0, 0, 0 );
+    m_Collided = false;
+
     m_Type = type;
     m_Angle = angle;
     m_Speed = speed;
@@ -14,9 +18,16 @@ Bullet::Bullet( std::string type, float x, float y, float angle, Direction direc
     m_IsFired = true;
 }
 
+Bullet::~Bullet()
+{
+    delete m_RigidBody;
+    delete m_Collider;
+}
+
 void Bullet::Draw()
 {
-    Texture::Instance()->Draw( m_Type, (int)m_Pos->x + 10, (int)m_Pos->y - 5, 120, 120, 0.0f, 0.3f, 0.3f, 270.0 );
+    Texture::Instance()->Draw( m_Type, (int)m_Pos->x, (int)m_Pos->y, 120, 120, 0.0f, 0.3f, 0.3f, 270.0 );
+    // m_Collider->Draw();
 }
 
 void Bullet::Update( float dt )
@@ -28,5 +39,12 @@ void Bullet::Update( float dt )
         m_RigidBody->ApplyForceX( m_Angle );
         m_RigidBody->Update( dt );
         m_RigidBody->Move( *m_Pos );
+
+        m_Collider->Set( m_Pos->x, m_Pos->y, 4, 10 );
     }
+}
+
+SDL_Rect Bullet::GetCollider() const
+{
+    return m_Collider->Get();
 }

@@ -716,7 +716,6 @@ int TiXmlElement::QueryIntAttribute( const std::string& name, int* ival ) const
 }
 #endif
 
-
 int TiXmlElement::QueryDoubleAttribute( const char* name, double* dval ) const
 {
 	const TiXmlAttribute* attrib = attributeSet.Find( name );

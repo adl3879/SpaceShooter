@@ -1,10 +1,11 @@
 #include "Vector2D.h"
 
 #include <iostream>
+#include <SDL.h>
 
 void Vector2D::Print()
 {
-    std::cout << "X: " << x << " Y: " << y << std::endl;
+    SDL_Log(" x: %f, y: %f ", x, y );
 }
 
 Vector2D Vector2D::operator+ ( const Vector2D& vec2 ) const

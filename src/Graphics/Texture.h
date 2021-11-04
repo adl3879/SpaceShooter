@@ -41,8 +41,11 @@ public:
     void Draw( std::string id, int x, int y, int width, int height, float scrollRatio = 0.0f, float scaleX = 1,
         float scaleY = 1, double angle = 0.0, SDL_RendererFlip flip = SDL_FLIP_NONE );
 
-    void DrawFrame( std::string id, int x, int y, int width, int height, int row, int frame, int scaleX = 1, 
-        int scaleY = 1, SDL_RendererFlip flip = SDL_FLIP_NONE );
+    void DrawFrame( std::string id, int x, int y, int width, int height, int row, int frame, float scaleX = 1, 
+        float scaleY = 1, double angle = 0.0, SDL_RendererFlip flip = SDL_FLIP_NONE );
+
+    bool BlitParticle( std::string id, int x, int y, const SDL_Rect* section, const SDL_Rect* rectSize, SDL_Color color,
+        SDL_BlendMode blenMode, float speed, double angle = 0.0, int pivotX = INT_MAX, int pivotY = INT_MAX );
 
     // Get dimensions
     const int GetHeight( std::string id );

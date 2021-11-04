@@ -13,4 +13,10 @@
     <texture id="bullet_3" source="../res/gfx/bullets/03.png" />
     <texture id="bullet_4" source="../res/gfx/bullets/04.png" />
     <texture id="bullet_5" source="../res/gfx/bullets/05.png" />
+
+    <!-- enemies -->
+    <texture id="redships" source="../res/gfx/redships.png" />
+
+    <!-- particles -->
+    <texture id="particles" source="../res/gfx/particles.png" />
 </textures>

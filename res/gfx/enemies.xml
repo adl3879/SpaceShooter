@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<enemies>
+    <enemy type="noob_1" textureId="redships" spriteWidth="64" spriteHeight="64" spriteRow="0"  spriteColumn="0" flip="2" scale="0.8" health="10" firePower="10" bulletTexture="bullet_2" bulletSpeed="5" />
+    <enemy type="noob_2" textureId="redships" spriteWidth="64" spriteHeight="64" spriteRow="0"  spriteColumn="1" flip="2" scale="0.8" health="10" firePower="10" bulletTexture="bullet_2" bulletSpeed="5" />
+    <enemy type="noob_3" textureId="redships" spriteWidth="64" spriteHeight="64" spriteRow="0"  spriteColumn="2" flip="2" scale="0.8" health="10" firePower="10" bulletTexture="bullet_2" bulletSpeed="5" />
+    <enemy type="noob_4" textureId="redships" spriteWidth="64" spriteHeight="64" spriteRow="1"  spriteColumn="0" flip="2" scale="0.8" health="10" firePower="10" bulletTexture="bullet_2" bulletSpeed="5" />
+    <enemy type="noob_5" textureId="redships" spriteWidth="64" spriteHeight="64" spriteRow="1"  spriteColumn="1" flip="2" scale="0.8" health="10" firePower="10" bulletTexture="bullet_2" bulletSpeed="5" />
+    <enemy type="noob_6" textureId="redships" spriteWidth="64" spriteHeight="64" spriteRow="1"  spriteColumn="2" flip="2" scale="0.8" health="10" firePower="10" bulletTexture="bullet_2" bulletSpeed="5" />
+    <enemy type="noob_7" textureId="redships" spriteWidth="64" spriteHeight="64" spriteRow="2"  spriteColumn="0" flip="2" scale="0.8" health="10" firePower="10" bulletTexture="bullet_2" bulletSpeed="5" />
+    <enemy type="noob_8" textureId="redships" spriteWidth="64" spriteHeight="64" spriteRow="2"  spriteColumn="1" flip="2" scale="0.8" health="10" firePower="10" bulletTexture="bullet_2" bulletSpeed="5" />
+    <enemy type="noob_9" textureId="redships" spriteWidth="64" spriteHeight="64" spriteRow="2"  spriteColumn="2" flip="2" scale="0.8" health="10" firePower="10" bulletTexture="bullet_2" bulletSpeed="5" />
+    <enemy type="noob_10" textureId="redships" spriteWidth="64" spriteHeight="64" spriteRow="3"  spriteColumn="0" flip="2" scale="0.8" health="10" firePower="10" bulletTexture="bullet_2" bulletSpeed="5" />
+    <enemy type="noob_11" textureId="redships" spriteWidth="64" spriteHeight="64" spriteRow="3"  spriteColumn="1" flip="2" scale="0.8" health="10" firePower="10" bulletTexture="bullet_2" bulletSpeed="5" />
+    <enemy type="noob_12" textureId="redships" spriteWidth="64" spriteHeight="64" spriteRow="3"  spriteColumn="2" flip="2" scale="0.8" health="10" firePower="10" bulletTexture="bullet_2" bulletSpeed="5" />
+</enemies> 

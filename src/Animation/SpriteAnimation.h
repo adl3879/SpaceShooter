@@ -20,8 +20,8 @@ public:
     virtual void Update( float dt );
 
     // Draw Animation sprites to screen
-    void Draw( float x, float y, int spriteWidth, int spriteHeight, float xScale = 1, float yScale = 1, 
-        SDL_RendererFlip flip = SDL_FLIP_NONE );
+    void Draw( float x, float y, int spriteWidth, int spriteHeight, float xScale = 1.0f, float yScale = 1.0f, 
+        double angle = 0.0, SDL_RendererFlip flip = SDL_FLIP_NONE );
 
     /**
      * Sets properties required for animation

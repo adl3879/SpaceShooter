@@ -14,8 +14,8 @@
 #include "Play.h"
 
 // screen size
-const int SCREEEN_WIDTH = 700;
-const int SCREEEN_HEIGHT = 650; 
+const int SCREEEN_WIDTH = 600;
+const int SCREEEN_HEIGHT = 700; 
 
 class Engine
 {

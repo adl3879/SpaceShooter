@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <objects>
-    <props classname="airship" textureId="airship" x="100" y="500" width="1000" height="1000" />
+    <props classname="airship" textureId="airship" x="280" y="580" width="1000" height="1000" />
 </objects>

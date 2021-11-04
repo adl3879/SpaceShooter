@@ -9,14 +9,13 @@
 #include "Audio.h"
 #include "Pause.h"
 #include "Menu.h"
+#include "ParticleSystem.h"
+#include "Timer.h"
 
 Engine* Engine::s_Instance = nullptr;
 Input* m_Input = nullptr;
 
-Engine::Engine()
-{
-    //
-}
+Engine::Engine() {}
 
 void Engine::LibInit()
 {
@@ -38,7 +37,7 @@ void Engine::LibInit()
 
     // Window
     // flag makes window resizable | fullscreen
-	SDL_WindowFlags window_flags = ( SDL_WindowFlags )( SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI );
+	SDL_WindowFlags window_flags = ( SDL_WindowFlags )( SDL_WINDOW_ALLOW_HIGHDPI );
     m_Window = SDL_CreateWindow(
 		"2D Engine",
 		SDL_WINDOWPOS_CENTERED,
@@ -72,6 +71,8 @@ void Engine::Init()
 
     if ( !Text::Parse( "../res/font/fonts.xml" ) )
         SDL_Log( "Failed to load fonts from xml file" );
+
+    ParticleSystem::Instance()->Parse( "../res/gfx/emitters.xml" );
         
     for ( auto& gameState : m_GameStates )
         gameState->Init();
@@ -88,13 +89,23 @@ void Engine::Render()
     
     // Render stuff here
     m_GameStates.back()->Render();
-
+    ParticleSystem::Instance()->PostUpdate();
+    
     SDL_RenderPresent( m_Renderer );
 }
 
 void Engine::Update()
 {
+    float dt = Timer::Instance()->GetDeltaTime();
     m_GameStates.back()->Update();
+
+    if ( Input::GetMouseButtonState( LEFT ) && Input::GetKeyDown( SDL_SCANCODE_0 ) )
+    {
+        int x = Input::GetMouseX();
+        int y = Input::GetMouseY();
+        ParticleSystem::Instance()->AddEmitter( "fire", Vector2D( x, y ) );
+    }
+    ParticleSystem::Instance()->Update( dt );
 }
 
 void Engine::Events()
@@ -111,6 +122,8 @@ void Engine::Clean()
 
     for ( auto& gameStates : m_GameStates )
         gameStates->Exit();
+
+    ParticleSystem::Instance()->CleanUp();
 
     IMG_Quit();
     SDL_Quit();

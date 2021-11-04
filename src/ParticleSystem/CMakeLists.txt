@@ -1,0 +1,11 @@
+add_library(
+    ParticleSystem
+    Particle.cpp
+    Particle.h
+    ParticlePool.cpp
+    ParticlePool.h
+    ParticleSystem.cpp
+    ParticleSystem.h
+    Emitter.cpp
+    Emitter.h
+)

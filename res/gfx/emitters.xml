@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<emitters>
+    <emitter type="fire">
+        <angleRange min="80" max="110" />
+        <rotSpeed value="0" randMin="-1" randMax="1" />
+        <startSpeed value="70" randMin="0" randMax="1" />
+        <endSpeed value="50" randMin="0" randMax="1" />
+        <startSize value="20" randMin="0" randMax="1" />
+        <endSize value="5" randMin="1" randMax="1" />
+        <emitNumber value="1" />
+        <emitVariance value="0" randMin="0" randMax="1" />
+        <maxParticleLife value="100" randMin="0" randMax="0" />
+        <textureRect x="0" y="0" w="150" h="150" />
+        <startColor r="255" g="100" b="0" a="255" />
+        <endColor r="210" g="210" b="210" a="0" />
+        <blendMode mode="add" />
+        <lifetime value="50" />
+    </emitter>
+</emitters>

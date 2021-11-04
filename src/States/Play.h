@@ -15,6 +15,8 @@ public:
     virtual void Update() override;
     virtual void Render() override;
 
+    static void SetLevel( const std::string& id );
+
 private:
     static void OpenMenu();
     static void PauseGame();
@@ -22,6 +24,6 @@ private:
 private:
     std::vector<GameObject*> m_GameObjects;
     SDL_Renderer* m_Ctx;
-    std::string m_LevelID;
-
+    static std::string m_LevelID;
+    Level* m_Level;
 };

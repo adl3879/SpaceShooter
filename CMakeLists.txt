@@ -4,7 +4,7 @@
 cmake_minimum_required (VERSION 3.7.2)
 
 project(hello)
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 
 # TODO: Add tests and install targets if needed.
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
@@ -49,6 +49,7 @@ set(ENGINE_DIR
     src/Game
     src/AssetManager
     src/States
+    src/ParticleSystem
     vendor/TinyXML
 )
 

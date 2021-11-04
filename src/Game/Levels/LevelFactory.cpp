@@ -10,7 +10,7 @@ void LevelFactory::RegisterType( std::string level, std::function<Level*()> type
 Level* LevelFactory::GetLevel( std::string level )
 {
     Level* lvl = nullptr;
-    auto it = m_TypeRegistry.find( "one" );
+    auto it = m_TypeRegistry.find( level );
     if ( it != m_TypeRegistry.end() )
         lvl = it->second();
         

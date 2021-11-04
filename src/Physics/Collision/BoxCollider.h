@@ -23,7 +23,7 @@ public:
         };
     }
 
-    void Draw()
+    inline void Draw()
     {
         SDL_RenderDrawRect( Engine::Instance()->GetRenderer(), &m_Box );
     }

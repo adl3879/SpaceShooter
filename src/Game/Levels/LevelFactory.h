@@ -1,10 +1,11 @@
 #pragma once
 
+#include "Engine.h"
+#include "Level.h"
+
 #include <string>
 #include <functional>
 #include <map>
-#include "Engine.h"
-#include "Level.h"
 
 class LevelFactory
 {
@@ -15,7 +16,6 @@ public:
     }
 
     void RegisterType( std::string level, std::function<Level*()> type );
-
     Level* GetLevel( std::string level );
 
 private:
