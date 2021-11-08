@@ -7,6 +7,7 @@
 #include "ParticleSystem.h"
 
 struct EmitterData;
+class ParticlePool;
 
 class Emitter
 {
@@ -28,7 +29,7 @@ public:
     void VortexSensitive( bool sensitive );
 
 private:
-    // unsigned int m_StartLife;
+    std::string m_TextureID;
     Vector2D m_Position;
     float m_StartSpeed, m_EndSpeed;
     float m_StartSize, m_EndSize;
@@ -58,11 +59,11 @@ private:
     bool m_Active = false;
     bool m_VortexSensitive = false;
 
-    Vector2D m_RotSpeedRand;
-    Vector2D m_StartSpeedRand;
-    Vector2D m_EndSpeedRand;
-    Vector2D m_EmitVarianceRand;
-    Vector2D m_LifeRand;
-    Vector2D m_StartSizeRand;
-    Vector2D m_EndSizeRand;
+    SDL_FPoint m_RotSpeedRand;
+    SDL_FPoint m_StartSpeedRand;
+    SDL_FPoint m_EndSpeedRand;
+    SDL_FPoint m_EmitVarianceRand;
+    SDL_FPoint m_LifeRand;
+    SDL_FPoint m_StartSizeRand;
+    SDL_FPoint m_EndSizeRand;
 };

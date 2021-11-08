@@ -1,10 +1,8 @@
 #include "ParticleSystem.h"
 
-// std::unordered_map<std::string, EmitterData> m_EmitterMap;
-
 ParticleSystem::ParticleSystem()
 {
-    SDL_Log( "Loading Particle System" );
+    // SDL_Log( "Loading Particle System" );
 }
 
 ParticleSystem* ParticleSystem::Instance()
@@ -27,6 +25,9 @@ bool ParticleSystem::Parse( const std::string& path )
         {
             std::string type = e->Attribute( "type" );
             EmitterData data;
+
+            // Texture ID
+            e->QueryStringAttribute( "texture", &data.TextureID );
 
             // Angle range
             e->FirstChildElement( "angleRange" )->QueryFloatAttribute( "min", &data.AngleRange.x );
@@ -99,16 +100,22 @@ bool ParticleSystem::Parse( const std::string& path )
             data.EndColor.b = b;
             data.EndColor.a = a;
 
-            // Blend mode
-            // e->FirstChildElement("blendMode" ).attribute("mode" ).as_string();
-            data.BlendMode = SDL_BlendMode::SDL_BLENDMODE_NONE;
+            std::string blendMode;
+            blendMode = e->FirstChildElement( "blendMode" )->Attribute( "mode" );
+
+            if ( blendMode == "none" ) data.BlendMode = SDL_BlendMode::SDL_BLENDMODE_NONE;
+            else if ( blendMode == "add" ) data.BlendMode = SDL_BlendMode::SDL_BLENDMODE_ADD;
+            else if ( blendMode == "blend" ) data.BlendMode = SDL_BlendMode::SDL_BLENDMODE_BLEND;
+            else if ( blendMode == "invalid" ) data.BlendMode = SDL_BlendMode::SDL_BLENDMODE_INVALID;
+            else if ( blendMode == "mul" ) data.BlendMode = SDL_BlendMode::SDL_BLENDMODE_MUL;
+            else if ( blendMode == "mod" ) data.BlendMode = SDL_BlendMode::SDL_BLENDMODE_MOD;
 
             m_EmitterMap[type] = data;
         }
     }
     return true;
 }
-
+ 
 bool ParticleSystem::Start()
 {
     return true;
@@ -147,7 +154,7 @@ bool ParticleSystem::PostUpdate()
         }
         m_EmittersToDestroy.clear();
     }
-        
+
     ret = m_EmittersToDestroy.size() <= 0;
     if ( ret )
     {
@@ -185,7 +192,6 @@ bool ParticleSystem::RemoveEmitter( Emitter* emitter )
         m_EmittersToDestroy.push_back( emitter );
         return true;
     }
-
     return false;
 }
 

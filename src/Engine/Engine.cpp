@@ -10,10 +10,12 @@
 #include "Pause.h"
 #include "Menu.h"
 #include "ParticleSystem.h"
+#include "Emitter.h"
 #include "Timer.h"
 
 Engine* Engine::s_Instance = nullptr;
 Input* m_Input = nullptr;
+Emitter* emitter;
 
 Engine::Engine() {}
 
@@ -47,16 +49,12 @@ void Engine::LibInit()
 		window_flags
 	);
     if ( m_Window == nullptr )
-    {
         std::cout << "Failed to create window. Error: " << SDL_GetError() << std::endl;
-    }
 
     // Renderer
     m_Renderer = SDL_CreateRenderer( m_Window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC );
     if ( m_Renderer == nullptr )
-    {
         std::cout << "Failed to create renderer. Error: " << SDL_GetError() << std::endl;
-    }
 }
 
 void Engine::Init()
@@ -89,8 +87,9 @@ void Engine::Render()
     
     // Render stuff here
     m_GameStates.back()->Render();
+
     ParticleSystem::Instance()->PostUpdate();
-    
+
     SDL_RenderPresent( m_Renderer );
 }
 
@@ -103,8 +102,9 @@ void Engine::Update()
     {
         int x = Input::GetMouseX();
         int y = Input::GetMouseY();
-        ParticleSystem::Instance()->AddEmitter( "fire", Vector2D( x, y ) );
+        emitter = ParticleSystem::Instance()->AddEmitter( "fire", Vector2D( x, y ) );
     }
+
     ParticleSystem::Instance()->Update( dt );
 }
 

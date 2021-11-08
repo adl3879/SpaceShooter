@@ -4,6 +4,7 @@
 #include "Engine.h"
 
 #include <math.h>
+#include <string>
 
 #define PI 3.14159265359
 #define DEG_2_RAD( angle ) \
@@ -15,7 +16,7 @@ public:
     Particle();
     virtual ~Particle();
 
-    void Init( const Vector2D& pos, float startSpeed, float endSpeed, float angle, double rotSpeed, float startSize, float endSize, 
+    void Init( char* textureId, const Vector2D& pos, float startSpeed, float endSpeed, float angle, double rotSpeed, float startSize, float endSize, 
         int life, SDL_Rect textureRect, SDL_Color startColor, SDL_Color endColor, SDL_BlendMode blendMode, bool vortexSensitive );
 
     bool Update( float dt );
@@ -56,6 +57,7 @@ private:
             SDL_Color StartColor, EndColor;
             SDL_BlendMode BlendMode;
             bool VortexSensitive;
+            char* TextureID;
 
             ParticleState() {}
         } Live;

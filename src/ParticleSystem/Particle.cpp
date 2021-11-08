@@ -10,7 +10,7 @@ Particle::~Particle()
     //
 }
 
-void Particle::Init( const Vector2D& pos, float startSpeed, float endSpeed, float angle, double rotSpeed, float startSize, float endSize, 
+void Particle::Init( char* textureId, const Vector2D& pos, float startSpeed, float endSpeed, float angle, double rotSpeed, float startSize, float endSize, 
     int life, SDL_Rect textureRect, SDL_Color startColor, SDL_Color endColor, SDL_BlendMode blendMode, bool vortexSensitive )
 {
     // Movement properties
@@ -33,6 +33,7 @@ void Particle::Init( const Vector2D& pos, float startSpeed, float endSpeed, floa
 	m_State.Live.EndColor = endColor;
 	m_State.Live.BlendMode = blendMode;
 	m_State.Live.Rect = m_State.Live.RectSize = textureRect;
+    m_State.Live.TextureID = textureId;
 
 	// Vortex
 	m_State.Live.VortexSensitive = vortexSensitive;
@@ -54,8 +55,8 @@ void Particle::Draw()
         resColor = RgbInterpolation( m_State.Live.StartColor, m_State.Live.TimeStep, m_State.Live.EndColor );
 
     // Blit particle on screen
-    Texture::Instance()->BlitParticle( "particles", static_cast<int>( centerX ), static_cast<int>( centerY ), &m_State.Live.Rect,
-        &m_State.Live.RectSize, resColor, m_State.Live.BlendMode, 1.0f, m_State.Live.CurrentRotSpeed );
+    Texture::Instance()->BlitParticle( m_State.Live.TextureID, static_cast<int>( centerX ), static_cast<int>( centerY ), 
+        &m_State.Live.Rect, &m_State.Live.RectSize, resColor, m_State.Live.BlendMode, 1.0f, m_State.Live.CurrentRotSpeed );
 
     m_State.Live.CurrentRotSpeed += m_State.Live.StartRotSpeed;
     m_State.Live.TimeStep += ( 1.0f / static_cast<float>( m_State.Live.StartLife ) );

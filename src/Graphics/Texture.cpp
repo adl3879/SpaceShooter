@@ -103,18 +103,15 @@ bool Texture::BlitParticle( std::string id, int x, int y, const SDL_Rect* sectio
     pivot.y = py;
     p = &pivot;
 
-    if ( SDL_SetTextureColorMod( m_TextureMap[id], color.r, color.g, color.b ) != 0 );
-        // SDL_Log( "Cannot set texture color mode. Error: %s", SDL_GetError() );
+    SDL_SetTextureColorMod( m_TextureMap[id], color.r, color.g, color.b );
 
-    if ( SDL_SetTextureAlphaMod( m_TextureMap[id], color.a ) != 0 )
-        SDL_Log( "Cannot set texture alpha mode. Error: %s", SDL_GetError() );
+    SDL_SetTextureAlphaMod( m_TextureMap[id], color.a );
 
-    if ( SDL_SetTextureBlendMode( m_TextureMap[id], blenMode ) != 0 )
-        SDL_Log( "Cannot set texture blend mode. Error: %s", SDL_GetError() );
+    // if ( SDL_SetTextureBlendMode( m_TextureMap[id], blenMode ) != 0 )
+    //     SDL_Log( "Cannot set texture blend mode. Error: %s", SDL_GetError() );
 
     if ( SDL_RenderCopyEx( Engine::Instance()->GetRenderer(), m_TextureMap[id], section, &rect, angle, nullptr, SDL_FLIP_NONE ) != 0 )
     {
-        SDL_Log( "Cannot set texture alpha mode. Error: %s", SDL_GetError() );
         return true;
     }
 

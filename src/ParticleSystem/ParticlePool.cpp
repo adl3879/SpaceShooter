@@ -16,7 +16,7 @@ ParticlePool::ParticlePool( Emitter* emitter )
     m_ParticleArray[m_PoolSize - 1].SetNext( nullptr );
 }
 
-void ParticlePool::Create( const Vector2D& pos, float startSpeed, float endSpeed, float angle, double rotSpeed, float startSize, float endSize, 
+void ParticlePool::Create( const char* textureId, const Vector2D& pos, float startSpeed, float endSpeed, float angle, double rotSpeed, float startSize, float endSize, 
     int life, SDL_Rect textureRect, SDL_Color startColor, SDL_Color endColor, SDL_BlendMode blendMode, bool vortexSensitive )
 {
     assert( m_FirstAvailable != nullptr );
@@ -25,8 +25,8 @@ void ParticlePool::Create( const Vector2D& pos, float startSpeed, float endSpeed
     Particle* newParticle = m_FirstAvailable;
     m_FirstAvailable = newParticle->GetNext();
 
-    newParticle->Init( pos, startSpeed, endSpeed, angle, rotSpeed, startSize, endSize, life, textureRect, startColor, endColor, 
-        blendMode, vortexSensitive );
+    newParticle->Init( (char*)textureId, pos, startSpeed, endSpeed, angle, rotSpeed, startSize, endSize, life, 
+        textureRect, startColor, endColor, blendMode, vortexSensitive );
 }
 
 void ParticlePool::Update( float dt )
@@ -48,5 +48,8 @@ void ParticlePool::Update( float dt )
 void ParticlePool::Draw()
 {
     for ( size_t i = 0; i < m_PoolSize; i++ )
-        m_ParticleArray[i].Draw();
+    {
+        if ( m_ParticleArray[i].InUse() )
+            m_ParticleArray[i].Draw();
+    }
 }

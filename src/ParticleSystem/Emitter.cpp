@@ -1,7 +1,12 @@
 #include "Emitter.h"
 
+#include <time.h>
+
 Emitter::Emitter( Vector2D position, EmitterData data )
 {
+    srand( time( nullptr ) );
+
+    m_TextureID = data.TextureID;
     m_Position = position;
     m_StartSpeed = data.StartSpeed;
     m_EndSpeed = data.EndSpeed;
@@ -16,13 +21,13 @@ Emitter::Emitter( Vector2D position, EmitterData data )
     m_BlendMode = data.BlendMode;
     m_VortexSensitive = data.VortexSensitive;
 
+    m_EmitNumber = data.EmitNumber;
+    m_EmitVariance = data.EmitVariance;
+    m_MaxParticleLife = data.MaxParticleLife;
+    m_MaxParticlesPerFrame = data.EmitNumber + data.EmitVariance;
+
     m_PoolSize = m_MaxParticlesPerFrame * ( m_MaxParticleLife + 1 );
     m_EmitterPool = new ParticlePool( this );
-
-    m_EmitNumber = data.EmitNumber;
-    m_MaxParticleLife = data.MaxParticleLife;
-    m_MaxParticlesPerFrame = data.MaxParticlesPerFrame;
-    m_EmitVariance = data.EmitVariance;
 
     m_Active = true;
     m_LifeTime = data.LifeTime;
@@ -63,7 +68,7 @@ void Emitter::Update( float dt )
             float randRadius = RangeRandomNum( randStart, randEnd );
             double randRotSpeed = m_RotSpeed * RangeRandomNum( m_RotSpeedRand.x, m_RotSpeedRand.y );
 
-            m_EmitterPool->Create( m_Position, tmpStartSpeed, tmpEndSpeed, randAngle, randRotSpeed, randRadius, 
+            m_EmitterPool->Create( m_TextureID.c_str(), m_Position, tmpStartSpeed, tmpEndSpeed, randAngle, randRotSpeed, randRadius, 
                 m_EndSize, m_MaxParticleLife, m_TextureRect, m_StartColor, m_EndColor, m_BlendMode, m_VortexSensitive );
             m_TimeStep += m_TimeStep;
         }
@@ -88,7 +93,7 @@ void Emitter::Update( float dt )
         }
     }
 
-    m_EmitterPool->Update( dt );
+    m_EmitterPool->Update( dt ); 
 }
 
 void Emitter::Draw()
@@ -139,7 +144,6 @@ const Vector2D& Emitter::GetEmitterPosition() const
 {
     return m_Position;
 }
-
 
 void Emitter::VortexSensitive( bool sensitive )
 {

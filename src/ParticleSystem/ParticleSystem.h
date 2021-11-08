@@ -25,20 +25,21 @@ struct EmitterData
     SDL_Color StartColor = { 0, 0, 0, 0 };
     SDL_Color EndColor = { 0, 0, 0, 0 };
     SDL_BlendMode BlendMode = SDL_BlendMode::SDL_BLENDMODE_NONE;
+    std::string TextureID;
     double LifeTime = -1.0f;
     float TimeStep = 0.0f;
 
     double StopTime = 0.0f;
     double EmissionTime = 0.0f;
 
-    Vector2D RotSpeedRand;
-    Vector2D StartSpeedRand;
-    Vector2D EndSpeedRand;
-    Vector2D EmitVarianceRand;
-    Vector2D LifeRand;
-    Vector2D StartSizeRand;
-    Vector2D EndSizeRand;
-    Vector2D MaxParticleLifeRand;
+    SDL_FPoint RotSpeedRand;
+    SDL_FPoint StartSpeedRand;
+    SDL_FPoint EndSpeedRand;
+    SDL_FPoint EmitVarianceRand;
+    SDL_FPoint LifeRand;
+    SDL_FPoint StartSizeRand;
+    SDL_FPoint EndSizeRand;
+    SDL_FPoint MaxParticleLifeRand;
 
     bool VortexSensitive = false;
 };
@@ -53,7 +54,6 @@ public:
     bool PreUpdate();
     bool Update( float dt );
     bool PostUpdate();
-    // void Draw();
     bool CleanUp();
 
     // Emitter methods
