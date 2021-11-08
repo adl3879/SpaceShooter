@@ -43,7 +43,7 @@ void Particle::Init( char* textureId, const Vector2D& pos, float startSpeed, flo
 		AddVortex( Vector2D( 250.0f, 200.0f ), 10.0f, 30.0f );
 }
 
-void Particle::Draw()
+bool Particle::Draw()
 {
     SDL_Rect tmpRect = { static_cast<int>( m_State.Live.StartSize ), static_cast<int> ( m_State.Live.StartSize ) };
     float centerX = m_State.Live.Position.x + ( ( tmpRect.w - m_State.Live.RectSize.w ) / 2.0f );
@@ -63,6 +63,8 @@ void Particle::Draw()
 
     if ( m_State.Live.TimeStep >= 1.0f )
         m_State.Live.TimeStep = 0.0f;
+
+    return true;
 }
 
 bool Particle::Update( float dt )

@@ -15,7 +15,7 @@
         <startColor r="255" g="0" b="0" a="255" />
         <endColor r="210" g="210" b="210" a="0" />
         <blendMode mode="add" />
-        <lifetime value="20" />
+        <lifetime value="200" />
     </emitter>
 
     <emitter type ="fire_purple" texture="particles">
@@ -37,17 +37,17 @@
     </emitter>
 
     <emitter type ="flame" texture="particles">
-        <angleRange min ="180" max ="180" />
+        <angleRange min ="270" max ="270" />
         <rotSpeed value ="0" randMin = "-1" randMax ="1" />
-        <startSpeed value ="200" randMin = "0" randMax ="1" />
-        <endSpeed value ="200" randMin = "0" randMax ="1" />
-        <startSize value ="0" randMin ="0" randMax ="1" />
-        <endSize value =" 120" randMin ="1" randMax ="1" />
-        <emitNumber value ="3" />
+        <startSpeed value ="800" randMin = "0" randMax ="1" />
+        <endSpeed value ="800" randMin = "0" randMax ="1" />
+        <startSize value ="200" randMin ="0" randMax ="1" />
+        <endSize value ="200" randMin ="1" randMax ="1" />
+        <emitNumber value ="5" />
         <emitVariance value ="2" randMin ="0" randMax ="1" />
-        <maxParticleLife value ="100"  randMin ="0" randMax ="1" />
+        <maxParticleLife value ="100" randMin ="0" randMax ="1" />
         <textureRect x="0" y="0" w="128" h="128" />
-        <startColor r ="255" g="10" b="0" a="255" />
+        <startColor r ="255" g="0" b="255" a="255" />
         <endColor r ="210" g="210" b="210" a ="0" />
         <blendMode mode ="add" />
         <lifetime value ="-1" />
@@ -55,20 +55,20 @@
     </emitter>
 
     <emitter type ="smoke" texture="particles">
-        <angleRange min ="0" max ="180" />
-        <rotSpeed value ="5" randMin ="-1" randMax ="1" />
+        <angleRange min ="0" max ="360" />
+        <rotSpeed value ="5" randMin ="-1" randMax ="5" />
         <startSpeed value ="90" randMin ="0" randMax ="1" />
         <endSpeed value ="90" randMin ="0" randMax ="1" />
-        <startSize value ="30" randMin ="0" randMax ="1" />
-        <endSize value =" 100" randMin ="1" randMax ="1" />
-        <emitNumber value ="1" />
-        <emitVariance value ="2" randMin ="0" randMax ="1" />
+        <startSize value ="80" randMin ="0" randMax ="1" />
+        <endSize value =" 90" randMin ="1" randMax ="1" />
+        <emitNumber value ="3" />
+        <emitVariance value ="1" randMin ="0" randMax ="1" />
         <maxParticleLife value ="140" randMin ="0" randMax ="1" />
         <textureRect x="640" y="0" w="512" h="512" />
         <startColor r ="210" g="210" b="210" a ="50" />
         <endColor r ="210" g="210" b="210" a ="0" />
         <blendMode mode ="blend" />
-        <lifetime value ="-1" />
+        <lifetime value ="100" />
         <vortexSensitive state = "true" />
     </emitter>
 

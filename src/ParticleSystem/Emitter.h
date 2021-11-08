@@ -16,7 +16,7 @@ public:
     virtual ~Emitter();
 
     void Update( float dt );
-    void Draw();
+    bool Draw( float dt );
 
     float RangeRandomNum( float min = -1.0f, float max = 1.0f );
     int GetPoolSize() const;

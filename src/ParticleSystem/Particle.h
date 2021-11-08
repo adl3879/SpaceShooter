@@ -20,7 +20,7 @@ public:
         int life, SDL_Rect textureRect, SDL_Color startColor, SDL_Color endColor, SDL_BlendMode blendMode, bool vortexSensitive );
 
     bool Update( float dt );
-    void Draw();
+    bool Draw();
 
     bool InUse() const;
     Particle* GetNext() const;

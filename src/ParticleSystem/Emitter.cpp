@@ -84,7 +84,17 @@ void Emitter::Update( float dt )
         }
     }
 
-    if ( m_LifeTime > 0.0f )
+    if ( m_EmissionTime > 0.0f )
+	{
+		m_StopTime = 0.0f;
+		if ( m_EmissionTimer.ReadMs() >= m_EmissionTime )
+		{
+			m_Active = false;
+			m_EmissionTime = 0.0f;
+		}
+	}
+
+    if ( m_LifeTime == 0.0f )
     {
         if ( m_LifeTimer.ReadMs() >= m_LifeTime )
         {
@@ -93,12 +103,17 @@ void Emitter::Update( float dt )
         }
     }
 
-    m_EmitterPool->Update( dt ); 
+    m_LifeTime--;
 }
 
-void Emitter::Draw()
+bool Emitter::Draw( float dt )
 {
-    m_EmitterPool->Draw();
+    if ( m_EmitterPool->Update(dt) == ParticleState::PARTICLE_DEAD && m_LifeTime <= -30.0f )
+		ParticleSystem::Instance()->RemoveEmitter( this );
+	else if ( m_EmitterPool->Update(dt) == ParticleState::PARTICLE_ALIVE_NOT_DRAWN )
+		return false;
+
+    return true;
 }
 
 float Emitter::RangeRandomNum( float min, float max )
@@ -129,7 +144,7 @@ void Emitter::StopEmission( double timer )
 {
     if ( m_Active )
     {
-        m_Active = false;
+        m_Active = false;   
         m_StopTime = timer;
         m_StopTimer.Start();
     }

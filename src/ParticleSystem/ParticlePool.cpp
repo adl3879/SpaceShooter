@@ -29,27 +29,28 @@ void ParticlePool::Create( const char* textureId, const Vector2D& pos, float sta
         textureRect, startColor, endColor, blendMode, vortexSensitive );
 }
 
-void ParticlePool::Update( float dt )
+ParticleState ParticlePool::Update( float dt )
 {
+    ParticleState state = ParticleState::PARTICLE_STATE_NOT_DEF;
+
     for ( size_t i = 0; i < m_PoolSize; i++ )
     {
         if ( m_ParticleArray[i].InUse() )
         {
             m_ParticleArray[i].Update( dt );
+
+            if ( m_ParticleArray[i].Draw() )
+				state = ParticleState::PARTICLE_ALIVE_DRAWN;
+			else
+				state = ParticleState::PARTICLE_ALIVE_NOT_DRAWN;
         } 
         else
         {
             m_ParticleArray[i].SetNext( m_FirstAvailable );
             m_FirstAvailable = &m_ParticleArray[i];
+            state = ParticleState::PARTICLE_DEAD;
         }
     }
-}
 
-void ParticlePool::Draw()
-{
-    for ( size_t i = 0; i < m_PoolSize; i++ )
-    {
-        if ( m_ParticleArray[i].InUse() )
-            m_ParticleArray[i].Draw();
-    }
+    return state;
 }

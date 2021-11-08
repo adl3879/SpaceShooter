@@ -142,6 +142,7 @@ bool ParticleSystem::Update( float dt )
 
 bool ParticleSystem::PostUpdate()
 {
+    float dt = Timer::Instance()->GetDeltaTime();
     bool ret = false;
 
     if ( !m_EmittersToDestroy.empty() )
@@ -160,7 +161,7 @@ bool ParticleSystem::PostUpdate()
     {
         std::list<Emitter*>::iterator it;
         for ( it = m_EmittersList.begin(); it != m_EmittersList.end() && ret; ++it )
-            ( *it )->Draw();
+            ( *it )->Draw( dt );
     }
 
     return ret;

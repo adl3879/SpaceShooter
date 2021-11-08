@@ -9,9 +9,9 @@ public:
 
     void Start();
     double ReadMs() const;
-    unsigned int ReadTicks() const;
+    uint64_t ReadTicks() const;
 
 private:
-    unsigned int m_StartedAt;
-    static unsigned int m_Frequency;
+    uint64_t m_StartedAt;
+    static uint64_t m_Frequency;
 };

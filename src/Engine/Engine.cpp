@@ -98,11 +98,11 @@ void Engine::Update()
     float dt = Timer::Instance()->GetDeltaTime();
     m_GameStates.back()->Update();
 
-    if ( Input::GetMouseButtonState( LEFT ) && Input::GetKeyDown( SDL_SCANCODE_0 ) )
+    if ( Input::GetKeyDown( SDL_SCANCODE_SPACE ) && Input::GetKeyDown( SDL_SCANCODE_0 ) )
     {
         int x = Input::GetMouseX();
         int y = Input::GetMouseY();
-        emitter = ParticleSystem::Instance()->AddEmitter( "fire", Vector2D( x, y ) );
+        emitter = ParticleSystem::Instance()->AddEmitter( "flame", Vector2D( x, y ) );
     }
 
     ParticleSystem::Instance()->Update( dt );

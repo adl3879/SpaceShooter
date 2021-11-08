@@ -2,7 +2,7 @@
 
 #include <SDL_timer.h>
 
-unsigned int PerfTimer::m_Frequency = 0;
+uint64_t PerfTimer::m_Frequency = 0;
 
 PerfTimer::PerfTimer()
 {
@@ -19,10 +19,10 @@ void PerfTimer::Start()
 
 double PerfTimer::ReadMs() const
 {
-    return 1000.0 * static_cast<double>( SDL_GetPerformanceCounter() - m_StartedAt ) /  static_cast<double>( m_Frequency );
+    return 1000.0 * ( static_cast<double>( SDL_GetPerformanceCounter() - m_StartedAt ) /  static_cast<double>( m_Frequency ) );
 }
 
-unsigned int PerfTimer::ReadTicks() const
+uint64_t PerfTimer::ReadTicks() const
 {
     return SDL_GetPerformanceCounter() - m_StartedAt;
 }
